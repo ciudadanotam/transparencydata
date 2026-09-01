@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resoluciones INAI México | Repositorio de Transparencia</title>
+    <meta name="description" content="Repositorio público de resoluciones del INAI México. RRAI, RRDP y resoluciones de transparencia con OCR aplicado. Búsqueda libre y acceso directo.">
+    <meta name="keywords" content="INAI, transparencia, RRAI, RRDP, resoluciones, México, acceso a la información, datos personales, gobierno abierto">
+    <meta name="author" content="@ciudadanotam">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="Resoluciones INAI México - Repositorio de Transparencia">
+    <meta property="og:description" content="+100 resoluciones del INAI con OCR. Búsqueda libre de RRAI, RRDP y resoluciones de transparencia.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ciudadanotam.github.io/transparencydata">
+    <meta property="og:locale" content="es_MX">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "Resoluciones INAI México 2024-2025",
+        "description": "Colección de resoluciones del Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales de México",
+        "url": "https://ciudadanotam.github.io/transparencydata",
+        "license": "https://github.com/ciudadanotam/transparencydata/blob/main/LICENSE",
+        "creator": {
+            "@type": "Organization",
+            "name": "Ciudadano TAM"
+        },
+        "datePublished": "2024-08-19",
+        "dateModified": "2024-08-21",
+        "spatialCoverage": {
+            "@type": "Place",
+            "name": "México"
+        },
+        "temporalCoverage": "2024/2025"
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #2980b9;
+            --accent: #e74c3c;
+            --bg: #f8f9fa;
+            --card: #ffffff;
+            --text: #2c3e50;
+            --border: #dee2e6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        header p {
+            opacity: 0.95;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .github-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            text-decoration: none;
+            color: white;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .github-badge:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 2rem auto 0;
+        }
+        
+        .stat {
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+        
+        .filters {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 1rem;
+            align-items: end;
+        }
+        
+        @media (max-width: 768px) {
+            .filters {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .filter-group input,
+        .filter-group select {
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .filter-group input:focus,
+        .filter-group select:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+        
+        .documents-grid {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .doc-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .doc-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+        
+        .doc-card.rrai { border-left-color: #27ae60; }
+        .doc-card.rrdp { border-left-color: #e74c3c; }
+        .doc-card.rr { border-left-color: #f39c12; }
+        
+        .doc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .doc-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .doc-title:hover {
+            text-decoration: underline;
+        }
+        
+        .doc-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .doc-badge.rrai { background: #d5f4e6; color: #27ae60; }
+        .doc-badge.rrdp { background: #fadbd8; color: #e74c3c; }
+        .doc-badge.rr { background: #fef9e7; color: #f39c12; }
+        
+        .doc-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+        }
+        
+        .doc-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+        }
+        
+        .no-results h3 {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #666;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+        
+        footer a {
+            color: var(--secondary);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top-color: var(--secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>⚖️ Resoluciones INAI México</h1>
+        <p>Repositorio público de resoluciones de transparencia del Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales</p>
+        
+        <a href="https://github.com/ciudadanotam/transparencydata" class="github-badge" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            Ver en GitHub
+        </a>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="total-docs">—</div>
+                <div class="stat-label">Resoluciones</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="total-rrai">—</div>
+                <div class="stat-label">RRAI</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="total-rrdp">—</div>
+                <div class="stat-label">RRDP</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="total-2025">—</div>
+                <div class="stat-label">2025</div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <section class="filters">
+            <div class="filter-group" style="grid-column: 1 / -1;">
+                <label for="search">🔍 Buscar en resoluciones</label>
+                <input type="text" id="search" placeholder="Número de resolución, tipo, año...">
+            </div>
+            <div class="filter-group">
+                <label for="filter-type">Tipo</label>
+                <select id="filter-type">
+                    <option value="">Todos</option>
+                    <option value="rrai">RRAI (Acceso a la Información)</option>
+                    <option value="rrdp">RRDP (Datos Personales)</option>
+                    <option value="rr">RR (Otras)</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="filter-year">Año</label>
+                <select id="filter-year">
+                    <option value="">Todos</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+        </section>
+        
+        <section id="documents-container" class="documents-grid">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Cargando resoluciones...</p>
+            </div>
+        </section>
+        
+        <div id="no-results" class="no-results" style="display: none;">
+            <h3>No se encontraron resoluciones</h3>
+            <p>Intenta con otros términos de búsqueda</p>
+        </div>
+    </main>
+    
+    <footer>
+        <p><strong>Datos públicos conforme a la Ley General de Transparencia</strong></p>
+        <p style="margin-top: 0.5rem;">
+            <a href="https://github.com/ciudadanotam/transparencydata">Repositorio en GitHub</a> | 
+            <a href="sitemap.xml">Sitemap</a> |
+            Licencia BSD-3
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+            Este sitio no es oficial del INAI. Es una iniciativa ciudadana para facilitar el acceso a la información pública.
+        </p>
+    </footer>
+    
+    <script>
+        const documentos = [
+            { archivo: "[OCR]_RRAI-002-2025 RESOLUCION_20260819_1310.txt", tipo: "rrai", numero: "002", año: "2025" },
+            { archivo: "[OCR]_RESOLUCION RRAI-003-2025_20260819_1326.txt", tipo: "rrai", numero: "003", año: "2025" },
+            { archivo: "[OCR]_RESOLUCION RRAI-004-2025_20260819_1326.txt", tipo: "rrai", numero: "004", año: "2025" },
+            { archivo: "[OCR]_RRAI-005-2025 RESOLUCION_20260819_1311.txt", tipo: "rrai", numero: "005", año: "2025" },
+            { archivo: "[OCR]_RRAI-006-2025_20260819_1311.txt", tipo: "rrai", numero: "006", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-007-2025_20260819_1327.txt", tipo: "rrai", numero: "007", año: "2025" },
+            { archivo: "[OCR]_RRAI-008-2025_20260819_1311.txt", tipo: "rrai", numero: "008", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-010-2025_20260819_1327.txt", tipo: "rrai", numero: "010", año: "2025" },
+            { archivo: "[OCR]_RRAI-011-2025 RESOLUCION_20260819_1311.txt", tipo: "rrai", numero: "011", año: "2025" },
+            { archivo: "[OCR]_2. RESOLUCIÓN RRAI-012-2025_20260819_1320.txt", tipo: "rrai", numero: "012", año: "2025" },
+            { archivo: "[OCR]_RRAI-014-2025 RESOLUCION_20260819_1312.txt", tipo: "rrai", numero: "014", año: "2025" },
+            { archivo: "[OCR]_RRAI-015-2025_20260819_1312.txt", tipo: "rrai", numero: "015", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRDP-016-2025_20260819_1309.txt", tipo: "rrdp", numero: "016", año: "2025" },
+            { archivo: "[OCR]_RRAI-017-2025_20260819_1312.txt", tipo: "rrai", numero: "017", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-019-2025_20260819_1328.txt", tipo: "rrai", numero: "019", año: "2025" },
+            { archivo: "[OCR]_RRAI-020-2025 RESOLUCION_20260819_1312.txt", tipo: "rrai", numero: "020", año: "2025" },
+            { archivo: "[OCR]_2. RESOLUCIÓN RRAI-021-2025_20260819_1321.txt", tipo: "rrai", numero: "021", año: "2025" },
+            { archivo: "[OCR]_RRAI-022-2025_20260819_1313.txt", tipo: "rrai", numero: "022", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-023-2025_20260819_1328.txt", tipo: "rrai", numero: "023", año: "2025" },
+            { archivo: "[OCR]_RESOLUCION RRAI-0024-2025_20260819_1329.txt", tipo: "rrai", numero: "024", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-026-2025_20260819_1330.txt", tipo: "rrai", numero: "026", año: "2025" },
+            { archivo: "[OCR]_RRAI-027-2025 RESOLUCION_20260819_1313.txt", tipo: "rrai", numero: "027", año: "2025" },
+            { archivo: "[OCR]_RESOLUCION RRAI-028-2025_20260819_1331.txt", tipo: "rrai", numero: "028", año: "2025" },
+            { archivo: "[OCR]_RRAI-029-2025 RESOLUCION_20260819_1314.txt", tipo: "rrai", numero: "029", año: "2025" },
+            { archivo: "[OCR]_RESOLUCION RRAI-0030-2025_20260819_1331.txt", tipo: "rrai", numero: "030", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-031-2025_20260819_1332.txt", tipo: "rrai", numero: "031", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-032-2025_20260819_1332.txt", tipo: "rrai", numero: "032", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-034-2025_20260819_1333.txt", tipo: "rrai", numero: "034", año: "2025" },
+            { archivo: "[OCR]_RRAI-035-2025_20260819_1314.txt", tipo: "rrai", numero: "035", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-036-2025_20260819_1333.txt", tipo: "rrai", numero: "036", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RR-037-2025_20260819_1326.txt", tipo: "rr", numero: "037", año: "2025" },
+            { archivo: "[OCR]_RRAI-039-2025_20260819_1314.txt", tipo: "rrai", numero: "039", año: "2025" },
+            { archivo: "[OCR]_RRAI-040-2025_20260819_1314.txt", tipo: "rrai", numero: "040", año: "2025" },
+            { archivo: "[OCR]_RRAI-041-2025_20260819_1314.txt", tipo: "rrai", numero: "041", año: "2025" },
+            { archivo: "[OCR]_RRAI-042-2025_20260819_1314.txt", tipo: "rrai", numero: "042", año: "2025" },
+            { archivo: "[OCR]_RRAI-044-2025_20260819_1314.txt", tipo: "rrai", numero: "044", año: "2025" },
+            { archivo: "[OCR]_RRAI-045-2025_20260819_1314.txt", tipo: "rrai", numero: "045", año: "2025" },
+            { archivo: "[OCR]_RRIA-046-2025_20260819_1320.txt", tipo: "rrai", numero: "046", año: "2025" },
+            { archivo: "[OCR]_RRAI-047-2025_20260819_1314.txt", tipo: "rrai", numero: "047", año: "2025" },
+            { archivo: "[OCR]_RRAI-048-2025_20260819_1314.txt", tipo: "rrai", numero: "048", año: "2025" },
+            { archivo: "[OCR]_RRAI-049-2025_20260819_1314.txt", tipo: "rrai", numero: "049", año: "2025" },
+            { archivo: "[OCR]_RRAI-050-2025_20260819_1314.txt", tipo: "rrai", numero: "050", año: "2025" },
+            { archivo: "[OCR]_RRAI-051-2025_20260819_1314.txt", tipo: "rrai", numero: "051", año: "2025" },
+            { archivo: "[OCR]_RRAI-052-2025_20260819_1314.txt", tipo: "rrai", numero: "052", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-053-2025_20260819_1334.txt", tipo: "rrai", numero: "053", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-055-2025_20260819_1253.txt", tipo: "rrai", numero: "055", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-056-2025_20260819_1254.txt", tipo: "rrai", numero: "056", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-057-2025_20260819_1254.txt", tipo: "rrai", numero: "057", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-058-2025_20260819_1255.txt", tipo: "rrai", numero: "058", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RR-059-2025_20260819_1326.txt", tipo: "rr", numero: "059", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-060-2025_20260819_1255.txt", tipo: "rrai", numero: "060", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-061-2025_20260819_1255.txt", tipo: "rrai", numero: "061", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-062-2025_20260819_1256.txt", tipo: "rrai", numero: "062", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-063-2025_20260819_1257.txt", tipo: "rrai", numero: "063", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-064-2025_20260819_1257.txt", tipo: "rrai", numero: "064", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RR-065-2025_20260819_1326.txt", tipo: "rr", numero: "065", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-066-2025_20260819_1258.txt", tipo: "rrai", numero: "066", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-067-2025_20260819_1258.txt", tipo: "rrai", numero: "067", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-068-2025_20260819_1259.txt", tipo: "rrai", numero: "068", año: "2025" },
+            { archivo: "[OCR]_RRAI-069-2025_20260819_1314.txt", tipo: "rrai", numero: "069", año: "2025" },
+            { archivo: "[OCR]_RRAI-070-2025_20260819_1314.txt", tipo: "rrai", numero: "070", año: "2025" },
+            { archivo: "[OCR]_RRAI 072-2025_20260819_1310.txt", tipo: "rrai", numero: "072", año: "2025" },
+            { archivo: "[OCR]_RRAI-073-2025_20260819_1314.txt", tipo: "rrai", numero: "073", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-074-2025_20260819_1259.txt", tipo: "rrai", numero: "074", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-075-2025_20260819_1259.txt", tipo: "rrai", numero: "075", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-085-2025_20260819_1300.txt", tipo: "rrai", numero: "085", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-086-2025_20260819_1301.txt", tipo: "rrai", numero: "086", año: "2025" },
+            { archivo: "[OCR]_RRAI-087-2025_20260819_1314.txt", tipo: "rrai", numero: "087", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-091-2025_20260819_1301.txt", tipo: "rrai", numero: "091", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-099-2025_20260819_1301.txt", tipo: "rrai", numero: "099", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-100-2025_20260819_1302.txt", tipo: "rrai", numero: "100", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-102-2025_20260819_1302.txt", tipo: "rrai", numero: "102", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-103-2025_20260819_1303.txt", tipo: "rrai", numero: "103", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-104-2025_20260819_1303.txt", tipo: "rrai", numero: "104", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-105-2025_20260819_1304.txt", tipo: "rrai", numero: "105", año: "2025" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-106-2025_20260819_1304.txt", tipo: "rrai", numero: "106", año: "2025" },
+            { archivo: "[OCR]_RRAI-125-2025_20260819_1314.txt", tipo: "rrai", numero: "125", año: "2025" },
+            { archivo: "[OCR]_RRAI-139-2025_20260819_1314.txt", tipo: "rrai", numero: "139", año: "2025" },
+            { archivo: "[OCR]_RRAI-168-2025_20260819_1314.txt", tipo: "rrai", numero: "168", año: "2025" },
+            { archivo: "[OCR]_RRAI-169-2025_20260819_1314.txt", tipo: "rrai", numero: "169", año: "2025" },
+            { archivo: "[OCR]_RRAI-171-2025_20260819_1314.txt", tipo: "rrai", numero: "171", año: "2025" },
+            { archivo: "[OCR]_RRAI-173-2025_20260819_1314.txt", tipo: "rrai", numero: "173", año: "2025" },
+            { archivo: "[OCR]_RRDP-170-2025_20260819_1320.txt", tipo: "rrdp", numero: "170", año: "2025" },
+            { archivo: "[OCR]_RRAI-222-2025_20260819_1314.txt", tipo: "rrai", numero: "222", año: "2025" },
+            { archivo: "[OCR]_RRAI-928-2024 RESOLUCIÓN_20260819_1315.txt", tipo: "rrai", numero: "928", año: "2024" },
+            { archivo: "[OCR]_RRAI-0927-2024 RESOLUCIÓN_20260819_1315.txt", tipo: "rrai", numero: "927", año: "2024" },
+            { archivo: "[OCR]_RRAI-0930-2024 RESOLUCION_20260819_1315.txt", tipo: "rrai", numero: "930", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-939-2024_20260819_1316.txt", tipo: "rrai", numero: "939", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-940-2024_20260819_1316.txt", tipo: "rrai", numero: "940", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-942-2024_20260819_1305.txt", tipo: "rrai", numero: "942", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-943-2024_20260819_1317.txt", tipo: "rrai", numero: "943", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-946-2024_20260819_1305.txt", tipo: "rrai", numero: "946", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-949-2024_20260819_1306.txt", tipo: "rrai", numero: "949", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-950-2024_20260819_1317.txt", tipo: "rrai", numero: "950", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-953-2024_20260819_1307.txt", tipo: "rrai", numero: "953", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-956-2024_20260819_1307.txt", tipo: "rrai", numero: "956", año: "2024" },
+            { archivo: "[OCR]_2. RESOLUCIÓN RRAI-957-2024_20260819_1324.txt", tipo: "rrai", numero: "957", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRAI-962-2024 Y ACUMULADO RRAI-963-2024_20260819_1308.txt", tipo: "rrai", numero: "962", año: "2024" },
+            { archivo: "[OCR]_RRAI-0966-2024 RESOLUCION_20260819_1318.txt", tipo: "rrai", numero: "966", año: "2024" },
+            { archivo: "[OCR]_RRAI-0969-2024 RESOLUCION_20260819_1319.txt", tipo: "rrai", numero: "969", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRDP-924-2024_20260819_1309.txt", tipo: "rrdp", numero: "924", año: "2024" },
+            { archivo: "[OCR]_2. RESOLUCIÓN RRDP-960-2024_20260819_1326.txt", tipo: "rrdp", numero: "960", año: "2024" },
+            { archivo: "[OCR]_RESOLUCIÓN RRDP-952-2024_20260819_1309.txt", tipo: "rrdp", numero: "952", año: "2024" },
+            { archivo: "[OCR]_270_20260820_1826_2024.txt", tipo: "rrai", numero: "270", año: "2024" },
+            { archivo: "[OCR]_273_20260820_1826_2024.txt", tipo: "rrai", numero: "273", año: "2024" },
+            { archivo: "[OCR]_274_20260820_1826_2024.txt", tipo: "rrai", numero: "274", año: "2024" },
+            { archivo: "[OCR]_276_20260820_1826_2024.txt", tipo: "rrai", numero: "276", año: "2024" },
+            { archivo: "[OCR]_279_20260820_1827_2024.txt", tipo: "rrai", numero: "279", año: "2024" },
+            { archivo: "[OCR]_282_20260820_1827_2024.txt", tipo: "rrai", numero: "282", año: "2024" },
+            { archivo: "[OCR]_288_20260820_1827_2024.txt", tipo: "rrai", numero: "288", año: "2024" },
+            { archivo: "[OCR]_289_20260820_1827_2024.txt", tipo: "rrai", numero: "289", año: "2024" },
+            { archivo: "[OCR]_291_20260820_1827_2024.txt", tipo: "rrai", numero: "291", año: "2024" },
+            { archivo: "[OCR]_300_20260820_1827_2024.txt", tipo: "rrai", numero: "300", año: "2024" },
+            { archivo: "[OCR]_353_20260820_1844_2024.txt", tipo: "rrai", numero: "353", año: "2024" },
+            { archivo: "[OCR]_354_20260820_1844_2024.txt", tipo: "rrai", numero: "354", año: "2024" },
+            { archivo: "[OCR]_362_20260820_1848_2024.txt", tipo: "rrai", numero: "362", año: "2024" },
+            { archivo: "[OCR]_363_20260820_1848_2024.txt", tipo: "rrai", numero: "363", año: "2024" },
+            { archivo: "[OCR]_445_20260820_1928_2024.txt", tipo: "rrai", numero: "445", año: "2024" },
+            { archivo: "[OCR]_453_20260820_1931_2024.txt", tipo: "rrai", numero: "453", año: "2024" },
+            { archivo: "[OCR]_456_20260820_1932_2024.txt", tipo: "rrai", numero: "456", año: "2024" },
+            { archivo: "[OCR]_457_20260820_1932_2024.txt", tipo: "rrai", numero: "457", año: "2024" },
+            { archivo: "[OCR]_458_20260820_1932_2024.txt", tipo: "rrai", numero: "458", año: "2024" }
+        ];
+        
+        let documentosFiltrados = [...documentos];
+        
+        function init() {
+            actualizarEstadisticas();
+            renderizarDocumentos();
+            setupEventListeners();
+        }
+        
+        function actualizarEstadisticas() {
+            document.getElementById('total-docs').textContent = documentos.length;
+            document.getElementById('total-rrai').textContent = documentos.filter(d => d.tipo === 'rrai').length;
+            document.getElementById('total-rrdp').textContent = documentos.filter(d => d.tipo === 'rrdp').length;
+            document.getElementById('total-2025').textContent = documentos.filter(d => d.año === '2025').length;
+        }
+        
+        function renderizarDocumentos() {
+            const container = document.getElementById('documents-container');
+            const noResults = document.getElementById('no-results');
+            
+            if (documentosFiltrados.length === 0) {
+                container.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            container.innerHTML = documentosFiltrados.map(doc => `
+                <article class="doc-card ${doc.tipo}">
+                    <div class="doc-header">
+                        <a href="${encodeURIComponent(doc.archivo)}" class="doc-title" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                            ${doc.tipo.toUpperCase()}-${doc.numero}/${doc.año}
+                        </a>
+                        <span class="doc-badge ${doc.tipo}">${doc.tipo.toUpperCase()}</span>
+                    </div>
+                    <div class="doc-meta">
+                        <span>📅 ${doc.año}</span>
+                        <span>📄 ${doc.archivo}</span>
+                    </div>
+                </article>
+            `).join('');
+        }
+        
+        function filtrar() {
+            const search = document.getElementById('search').value.toLowerCase();
+            const tipo = document.getElementById('filter-type').value;
+            const año = document.getElementById('filter-year').value;
+            
+            documentosFiltrados = documentos.filter(doc => {
+                const matchSearch = !search || 
+                    doc.numero.includes(search) ||
+                    doc.tipo.includes(search) ||
+                    doc.archivo.toLowerCase().includes(search);
+                
+                const matchTipo = !tipo || doc.tipo === tipo;
+                const matchAño = !año || doc.año === año;
+                
+                return matchSearch && matchTipo && matchAño;
+            });
+            
+            renderizarDocumentos();
+        }
+        
+        function setupEventListeners() {
+            document.getElementById('search').addEventListener('input', filtrar);
+            document.getElementById('filter-type').addEventListener('change', filtrar);
+            document.getElementById('filter-year').addEventListener('change', filtrar);
+        }
+        
+        init();
+    </script>
+</body>
+</html>
